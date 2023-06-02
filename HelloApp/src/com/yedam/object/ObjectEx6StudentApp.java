@@ -14,17 +14,19 @@ public class ObjectEx6StudentApp {
 		students[0] = new Student("23-01", "홍길동", "남", 80);
 		students[1] = new Student("23-02", "황진이", "여", 85);
 		students[2] = new Student("23-03", "황보경", "여", 89);
+		students[3] = new Student("23-04", "홍길동", "남", 82);
+		students[4] = new Student("23-05", "무지개", "여", 85);
+		students[5] = new Student("23-06", "고구마", "남", 88);
 	}
 
 	public static void main(String[] args) {
-		init();
 
 		boolean run = true;
+		init();
 
 		while (run) {
 			printMenu();
 			int selectNo = Integer.parseInt(scn.nextLine());
-
 			if (selectNo == 1) {
 				register();
 			} else if (selectNo == 2) {
@@ -41,13 +43,24 @@ public class ObjectEx6StudentApp {
 			}
 		}
 		System.out.println("end of prog.");
-
 	} // end of main().
 
 	// 1.register(), 2.list() 3.search() 4.modify() 5.remove()
 	// _____________________남-1명, 여-2명, 최고점수: 이름 - 100점
 
 	public static void register() {
+		boolean isNull = false;
+		for (int i = 0; i < students.length; i++) {
+			if (students[i] == null) {
+				isNull = true;
+				break;
+			}
+		}
+		if (!isNull) {
+			System.out.println("등록할 공간이 없습니다.");
+			return;
+		}
+
 		System.out.print("학생번호> ");
 		String stdNo = scn.nextLine();
 		System.out.print("학생이름> ");
@@ -90,6 +103,7 @@ public class ObjectEx6StudentApp {
 			}
 		}
 		if (isExist) {
+			System.out.println("---------------------------");
 			System.out.printf("남-%d, 여-%d, 최고점수: %s - %d점\n", mCnt, wCnt, mName, mScore);
 		} else {
 			System.out.println("등록된 정보가 없습니다.");
