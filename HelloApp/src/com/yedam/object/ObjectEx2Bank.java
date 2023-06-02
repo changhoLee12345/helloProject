@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class ObjectEx2Bank {
 	public static void main(String[] args) {
 		// int[] {0,0,0}, Bank[] {null,null,null}
+
 		Bank[] accounts = new Bank[3];
-		
+
 		Bank b1 = new Bank();
 		b1.accountNo = "11-11";
 		b1.owner = "홍길동";
@@ -20,7 +21,7 @@ public class ObjectEx2Bank {
 		b3.owner = "최길동";
 		b3.balance = 30000;
 
-		accounts = new Bank[] { b1, b2, b3 };
+//		accounts = new Bank[] { b1, b2, b3 }; // 계좌3건 등록
 
 		boolean run = true;
 		int selectNo = 0;
