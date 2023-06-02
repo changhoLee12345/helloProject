@@ -1,5 +1,6 @@
 package com.yedam.object;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ObjectEx6StudentApp {
@@ -10,13 +11,28 @@ public class ObjectEx6StudentApp {
 	static Student[] students = new Student[6];
 	static Scanner scn = new Scanner(System.in);
 
+	static boolean showScr = false;
+
+	public static void login() {
+		if (showScr == false) {
+			System.out.print("관리자계정입력> ");
+			String id = scn.nextLine();
+			System.out.print("비밀번호입력> ");
+			String pw = scn.nextLine();
+
+			if (id.equals("admin") && pw.equals("****")) {
+				showScr = true;
+			}
+		}
+	}
+
 	public static void init() {
 		students[0] = new Student("23-01", "홍길동", "남", 80);
 		students[1] = new Student("23-02", "황진이", "여", 85);
 		students[2] = new Student("23-03", "황보경", "여", 89);
 		students[3] = new Student("23-04", "홍길동", "남", 82);
-		students[4] = new Student("23-05", "무지개", "여", 85);
-		students[5] = new Student("23-06", "고구마", "남", 88);
+//		students[4] = new Student("23-05", "무지개", "여", 85);
+//		students[5] = new Student("23-06", "고구마", "남", 88);
 	}
 
 	public static void main(String[] args) {
@@ -25,6 +41,10 @@ public class ObjectEx6StudentApp {
 		init();
 
 		while (run) {
+			login();
+			if (!showScr)
+				continue;
+
 			printMenu();
 			int selectNo = Integer.parseInt(scn.nextLine());
 			if (selectNo == 1) {
