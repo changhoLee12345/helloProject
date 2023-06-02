@@ -47,9 +47,12 @@ public class ObjectEx2Bank {
 				int balance = Integer.parseInt(scn.nextLine());
 
 				Bank bank = new Bank();
-				bank.accountNo = account;
-				bank.owner = owner;
-				bank.balance = balance;
+//				bank.accountNo = account;
+//				bank.owner = owner;
+//				bank.balance = balance;
+				bank.setAccountNo(account);
+				bank.setOwner(owner);
+				bank.setBalance(balance);
 
 				for (int i = 0; i < accounts.length; i++) {
 					if (accounts[i] == null) {
@@ -65,9 +68,9 @@ public class ObjectEx2Bank {
 				boolean isExist = false; // 계좌의 존재여부를 체크하기위한 변수.
 				for (int i = 0; i < accounts.length; i++) {
 					// 배열위치의 값이 null 아닌 경우에만 조건검색.
-					if (accounts[i] != null && accounts[i].accountNo.equals(account)) {
+					if (accounts[i] != null && accounts[i].getAccountNo().equals(account)) {
 						System.out.printf("예금주: %s, 잔액: %d\n", //
-								accounts[i].owner, accounts[i].balance);
+								accounts[i].getOwner(), accounts[i].getBalance());
 						isExist = true;
 						break; // 조회하려는 계좌를 찾았으면 더 반복할 필요가 없다.
 					}
@@ -83,7 +86,7 @@ public class ObjectEx2Bank {
 				// 없을 경우에는 메세지보여주고 있을 경우에는 진행.
 				boolean isExist = false;
 				for (int i = 0; i < accounts.length; i++) {
-					if (accounts[i] == null && accounts[i].accountNo.equals(account)) {
+					if (accounts[i] == null && accounts[i].getAccountNo().equals(account)) {
 						isExist = true;
 						break;
 					}
@@ -98,8 +101,8 @@ public class ObjectEx2Bank {
 
 				for (int i = 0; i < accounts.length; i++) {
 					// 배열위치의 값이 null 아닌 경우에만 조건검색.
-					if (accounts[i] != null && accounts[i].accountNo.equals(account)) {
-						accounts[i].balance += balance;
+					if (accounts[i] != null && accounts[i].getAccountNo().equals(account)) {
+						accounts[i].setBalance(accounts[i].getBalance() + balance);
 					}
 				}
 
@@ -112,8 +115,8 @@ public class ObjectEx2Bank {
 
 				for (int i = 0; i < accounts.length; i++) {
 					// 배열위치의 값이 null 아닌 경우에만 조건검색.
-					if (accounts[i] != null && accounts[i].accountNo.equals(account)) {
-						accounts[i].balance -= balance;
+					if (accounts[i] != null && accounts[i].getAccountNo().equals(account)) {
+						accounts[i].setBalance(accounts[i].getBalance() + balance);
 					}
 				}
 
